@@ -1,0 +1,7 @@
+<td><%= cat.name %></td>
+<td><%= cat.birth_date %></td>
+<td><%= cat.color %></td>
+<td><%= cat.sex %></td>
+<td><%= cat.description %></td>
+<td><%= link_to 'Edit cat', edit_cat_url(cat) %></td>
+<td><%= button_to "Delete", cat_url(cat), method: :delete  %></td>

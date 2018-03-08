@@ -1,0 +1,40 @@
+<% if type == :new %>
+  <% action_url = cats_url %>
+<% elsif type == :edit %>
+  <% action_url = cat_url(cat) %>
+<% end %>
+
+<form action="<%= action_url %>" method='post' >
+  <% if type == :edit %>
+  <input type="hidden" name="_method" value='PATCH'>
+  <% end %>
+
+  Name: <input type="text" name="cat[name]" value="<%= cat.name %>">
+
+  <br>
+
+  Sex:
+  F<%= radio_button_tag 'cat[sex]', "F", cat.sex == "F"%>
+  M<%= radio_button_tag 'cat[sex]', "M", cat.sex == "M"%>
+
+  <br>
+
+  Color: <%= select("cat", "color", options_for_select(Cat::COLORS, cat.color), { include_blank: "-- Please Select --" }) %>
+
+  <br>
+
+  Birth Date: <input type="date" name="cat[birth_date]" value="<%= cat.birth_date %>">
+
+  <br>
+
+  Description:
+  <textarea name="cat[description]">
+    <%= cat.description %>
+  </textarea>
+
+  <br>
+
+  <input type="submit" value="<%= type == :edit ? 'Update cat' : 'Add cat' %>">
+</form>
+
+<%= link_to 'Cancel', type == :edit ? cat_url(cat) : cats_url %>

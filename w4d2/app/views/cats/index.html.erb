@@ -1,0 +1,17 @@
+<%= link_to 'Add a new cat', new_cat_url %>
+<table>
+  <tr>
+    <td></td>
+    <td>Name</td>
+    <td>Birth Date</td>
+    <td>Color</td>
+    <td>Sex</td>
+    <td>Description</td>
+  </tr>
+  <tr>
+    <% @cats.each do |cat| %>
+    <td><%= link_to "View", cat_url(cat) %></td>
+    <%= render cat %>
+  </tr>
+    <% end %>
+</table>
