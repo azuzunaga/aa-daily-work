@@ -6,8 +6,37 @@
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
-  </head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bungee+Shade">
+    <style>
+      h1 {
+        font-family: 'Bungee Shade', cursive;
+        font-size: 75px;
+        padding: 0 1em;
+        }
+      .header {
+        padding: 0 1em;
+        }
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        }
 
+    </style>
+  </head>
+  <div class="header">
+    <div class="nav">
+      <h1></h1>
+      <h1>Music App</h1>
+      <% if logged_in? %>
+        <aside ><%= current_user.email %>
+        <%= button_to "Logout", session_url, method: :delete %></aside>
+      <% else %>
+        <aside><%= link_to "Login", new_session_url %>
+        <%= link_to "Sign up", new_user_url %></aside>
+      <% end %>
+    </div>
+  </div>
   <body>
     <%= yield %>
   </body>
