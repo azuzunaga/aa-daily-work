@@ -1,0 +1,24 @@
+<h1>I Am A POST</h1>
+
+<h1> <%= @post.title %> </h1>
+
+<h3>Author: <%= @post.author.username %></h3>
+
+<p>Content: <%= @post.content %></p>
+
+<h6>URL: <%= @post.url %></h6>
+
+<br>
+  <%= link_to "Edit Post", edit_post_url(@post) %>
+<br>
+
+<h4>
+  All Subs
+</h4>
+<ul>
+  <% @post.subs.each do |sub| %>
+    <li>
+      <%= link_to sub.title, sub_url(sub) %>
+    </li>
+  <% end %>
+</ul>
